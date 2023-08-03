@@ -8,10 +8,12 @@
   </head>
   <body>
     <div class="card">
+        <form>
       <div class="search">
-        <input type="text" placeholder="Enter City Name" spellcheck="false" />
-        <button><img src="images/search.png" /></button>
-      </div>
+            <input type="text" placeholder="Enter City Name" spellcheck="false" />
+            <button type="submit"><img src="images/search.png" /></button>
+        </div>
+    </form>
       <div class="error">
 <p>Invalid city name</p>
 
@@ -86,9 +88,13 @@ document.querySelector(".error").style.display = "none";
     
 
 }
-searchBtn.addEventListener("click", ()=>{
+document.addEventListener("submit", (e) => {
+    e.preventDefault()
     checkWeather(searchBox.value);
 })
+// searchBtn.addEventListener("click", ()=>{
+//     checkWeather(searchBox.value);
+// })
 
 </script>
 
