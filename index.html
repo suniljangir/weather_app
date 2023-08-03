@@ -9,13 +9,13 @@
   <body>
     <div class="card">
       <div class="search">
-        <input type="test" placeholder="Enter City Name" spellcheck="false" />
+        <input type="text" placeholder="Enter City Name" spellcheck="false" />
         <button><img src="images/search.png" /></button>
       </div>
       <div class="weather">
         <img src="images/rain.png" />
         <h1 class="temp">22°C</h1>
-        <h2 city="city">New York</h2>
+        <h2 class="city">New York</h2>
         <div class="details">
           <div class="col">
             <img src="images/humidity.png" />
@@ -32,5 +32,22 @@
         </div>
       </div>
     </div>
+<script>
+const apiKey="a9b9236705ec50a181f02b12343aa208";
+const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=Jaipur";
+
+async function checkWeather(){
+
+    const response = await fetch(apiUrl + `&appid=${apiKey}`);
+    var data = await response.json();
+
+document.querySelector(".city").innerHTML = data.name;
+document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+}
+checkWeather();
+</script>
+
   </body>
 </html>
